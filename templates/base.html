@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bkreviews</title>
-</head>
-<body>
+{% extends 'layout.html'%}
+
+{%block title%}
+<title>Bkreviews</title>
+{% endblock %}
+
+{% block links%}
+{% endblock%}
+
+{% block con %}
+  <h1>welcome to booknuggets beta version</h1>
   <form action="/" method="POST">
     <div class="form-group">
       <input type="text" class="form-control" name="book" autofocus aria-describedby="bookHelp"
@@ -14,5 +17,4 @@
     </div>
     <button>submit</button>
   </form>
-</body>
-</html>
+{% endblock %}
