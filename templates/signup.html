@@ -1,0 +1,27 @@
+{% extends 'layout.html'%}
+{% block con %}
+<h1>sign up page</h1>
+<form method="POST" action="/signup">
+  {% with messages = get_flashed_messages() %}
+  {% if messages%}
+    <div class="alert alert-danger" role="alert">
+      {{ messages[0] }} go back to <a href="{{ url_for('auth.login') }}">LOGIN PAGE</a>
+    </div>
+  {% endif %}
+  {% endwith%}
+  <div class="form-group">
+    <label for="exampleInputUsername1">Your Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your personal details with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputUsername1">Choose a Username</label>
+    <input type="username" class="form-control" id="exampleInputUsername1" placeholder="Enter username" name="username">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+  </div>
+  <button type="submit" class="btn btn-primary">Sign up</button>
+</form>
+{% endblock %}
