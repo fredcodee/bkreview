@@ -9,7 +9,14 @@
 
 {% block con %}
   <h1>welcome to booknuggets beta version</h1>
-  <form action="/" method="POST">
+  {% with messages = get_flashed_messages() %}
+    {% if messages%}
+      <div class="alert alert-danger" role="alert">
+        <p>{{ messages[0] }}</p>
+      </div>
+    {% endif %}
+  {% endwith%}
+  <form action="/search" method="POST">
     <div class="form-group">
       <input type="text" class="form-control" name="book" autofocus aria-describedby="bookHelp"
         placeholder="ISBN, Title or Author ">
