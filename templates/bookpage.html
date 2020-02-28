@@ -6,7 +6,7 @@
       <img src="http://covers.openlibrary.org/b/isbn/{{ isbn }}-M.jpg" width="130px">
     </div>
     <div class="col-sm-4">
-      <p>{{ title }}</p>
+      <p>Title: {{ title }}</p>
       <p>Author: {{ author }}</p>
       <p>Published on {{ year }}</p>
       <p>ISBN-10: {{isbn}}</p>
@@ -33,22 +33,13 @@
       {% endwith%}
     </div>
     <div class="rating">
-      <form method= "POST" action="/book">
-        <div class="form-group col-sm">
-          <label for="rating">Rate this book</label>
-          <select id="rating" name="rate" class="form-control" required>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option selected value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
+      <form method= "POST" action="/comment">
         <input type="text" name="comment" placeholder="type your reviews here"required>
         <button>submit</button>
       </form>
     </div>
   </div>
+  
   <div class="userreviews">
     {%for review in reviews%}
       <div class="list-group">
