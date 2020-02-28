@@ -73,7 +73,7 @@ def book_post(isbn):
         return(redirect(url_for('main.book', isbn=isbn)))
 
 
-@main.route("/profile")
+@main.route("/<username>")
 @login_required
-def profile():
-    pass
+def profile(username):
+    return(render_template("profile.html"))

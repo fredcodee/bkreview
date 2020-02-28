@@ -1,5 +1,6 @@
 from flask_login import UserMixin
 from datetime import datetime
+from hashlib import md5
 from . import db
 
 
@@ -10,6 +11,9 @@ class User(UserMixin, db.Model):
   password = db.Column(db.String(100))
   reviews = db.relationship('Review', backref='feedback', lazy=True)
 
+  def avatar(self, size):
+    digest = md5(self.email.lower().encode('utf-8')).hexdigest()
+    return('https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(digest, size))
 
 class Books(db.Model):
   id = db.Column(db.Integer, primary_key=True)

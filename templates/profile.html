@@ -1,0 +1,14 @@
+{% extends 'layout.html'%}
+
+{% block con %}
+  <div class="profilecon">
+    <table>
+      <tr valign="top">
+        <td><img src="{{ current_user.avatar(128) }}"></td>
+        <td>
+          <h1>User: {{ current_user.username }}</h1>
+          <p>Email: {{current_user.email}}</p>
+        </td>
+      </tr>
+  </div>
+{% endblock %}
