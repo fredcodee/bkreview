@@ -1,6 +1,7 @@
 from flask import Flask, Blueprint, redirect, render_template, request, flash, jsonify,url_for
 from flask_login import LoginManager, login_required, current_user
 from . models import User, Books, Review
+from . import db
 import requests
 import json
 
@@ -44,12 +45,35 @@ def book(isbn):
     bd = a['books'][0]
 
     # Fetch book reviews
-    book_reviews=""
+    book_reviews = Review.query.filter_by(book_isbn=isbn).all()
+    if len(book_reviews) == 0:
+        check=False
+    else:
+        check=True
 
 
-    return(render_template('bookpage.html', title=book_id.title, author=book_id.author, year=book_id.year, isbn=bd['isbn'], av=bd['average_rating'], wrc=bd['work_ratings_count']))
+    return(render_template('bookpage.html', title=book_id.title, author=book_id.author, year=book_id.year, isbn=bd['isbn'], av=bd['average_rating'], wrc=bd['work_ratings_count'], reviews=book_reviews, check=check))
 
-@main.route("/comment", methods=['GET', 'POST'])
+
+
+@main.route("/book/<isbn>", methods=['POST'])
 @login_required
-def comment():
+def book_post(isbn):
+    review = request.form.get('comment')
+
+    if review:
+        save_review=Review(book_isbn=isbn,comment=review, feedback=current_user)
+        db.session.add(save_review)
+        db.session.commit()
+
+        flash("Review uploaded successfully")
+        return(redirect(url_for('main.book', isbn=isbn)))
+    else:
+        flash("please leave a review")
+        return(redirect(url_for('main.book', isbn=isbn)))
+
+
+@main.route("/profile")
+@login_required
+def profile():
     pass

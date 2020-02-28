@@ -33,17 +33,13 @@ def signup():
     name = request.form.get('name')
     username = request.form.get('username')
     password = request.form.get('password')
-    password2 = request.form.get('password2')
 
     # Ensure required details  was submitted
-    if not email or not name or not password or not password2 or not username:
+    if not email or not name or not password or not username:
       flash("must provide all required details")
       return(redirect(url_for('auth.signup')))
     if len(password) < 4:
       flash("password too weak choose a stronger option")
-      return(redirect(url_for('auth.signup')))
-    if password != password2:
-      flash("confirm password must be the same")
       return(redirect(url_for('auth.signup')))
 
     #check if user exits in database
