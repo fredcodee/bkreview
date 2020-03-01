@@ -76,4 +76,19 @@ def book_post(isbn):
 @main.route("/<username>")
 @login_required
 def profile(username):
-    return(render_template("profile.html"))
+    #get user reviews
+    user_reviews = Review.query.all()
+    t = []
+    for info in user_reviews:
+        if info.feedback.email == current_user.email:
+            t.append(info)
+    return(render_template("profile.html", info=t))
+
+#delete reviews
+@main.route("/delete/<id>")
+@login_required
+def delete(id):
+    get_review = Review.query.filter_by(id=int(id)).first()
+    db.session.delete(get_review)
+    db.session.commit()
+    return redirect(url_for('main.profile', username= current_user.username))

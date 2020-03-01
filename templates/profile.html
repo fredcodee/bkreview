@@ -10,5 +10,18 @@
           <p>Email: {{current_user.email}}</p>
         </td>
       </tr>
+    </table>
   </div>
+
+    <div class="yourreviews">
+      <p>your review historry</p>
+      {%for rev in info%}
+        <div class="list-group">
+          <p class="mb-1" style="color:black">{{rev.username}}</p>
+          <small>{{rev.dateposted.strftime("%b %d %Y %H:%M:%S")}}</small>
+          <p class="mb-1">"{{rev.comment}}" <span> <a href="/book/{{rev.book_isbn}}">-book isbn: {{rev.book_isbn}}</a></span><span><a href="{{ url_for('main.delete', id=rev.id) }}"><button class="delete">Delete</button></a></span></p>
+        </div>
+      {% endfor %}
+    </div>
+
 {% endblock %}
