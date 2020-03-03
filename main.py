@@ -8,9 +8,28 @@ import json
 
 main = Blueprint('main', __name__)
 
+#get api key
+key = "82F9vHtuZ1UxuDWQHifAA"
+
+
 @main.route("/")
 def home():
-    return(render_template("base.html"))
+    #home suggestions
+    def getsug_id():
+        import random
+        sug_id = []
+        for i in range(3):
+            n = random.randrange(1, 5000)
+            sug_id.append(n)
+        return(sug_id)
+        
+    suggestions=[]
+    for suglist in getsug_id():
+        n= Books.query.filter_by(id=int(suglist)).first()
+        suggestions.append(n)
+
+
+    return(render_template("base.html", suggestions=suggestions))
 
 
 @main.route("/search", methods=['POST'])
@@ -36,8 +55,6 @@ def book(isbn):
     book_id = Books.query.filter_by(isbn=isbn).first()
 
     """GOODREADS"""
-    #get api key
-    key = "82F9vHtuZ1UxuDWQHifAA"
     res = requests.get("https://www.goodreads.com/book/review_counts.json",params={"key": key, "isbns": isbn})
     
     #parse json to dict
@@ -50,7 +67,6 @@ def book(isbn):
         check=False
     else:
         check=True
-
 
     return(render_template('bookpage.html', title=book_id.title, author=book_id.author, year=book_id.year, isbn=bd['isbn'], av=bd['average_rating'], wrc=bd['work_ratings_count'], reviews=book_reviews, check=check))
 
@@ -92,3 +108,5 @@ def delete(id):
     db.session.delete(get_review)
     db.session.commit()
     return redirect(url_for('main.profile', username= current_user.username))
+
+

@@ -8,7 +8,7 @@
 {% endblock%}
 
 {% block con %}
-  <h1>welcome to booknuggets beta version</h1>
+  <h1>welcome to booknuggetss beta version</h1>
   {% with messages = get_flashed_messages() %}
     {% if messages%}
       <div class="alert alert-danger" role="alert">
@@ -24,4 +24,17 @@
     </div>
     <button>submit</button>
   </form>
+  <div class="suggestions">
+    <h3>check out this picks</h3>
+    <div class="row">
+      {% for suggestion in suggestions%}
+       <div class="col-6 col-md-4">
+         <div class="sugcon">
+          <a href="/book/{{suggestion.isbn}}" ><img src="http://covers.openlibrary.org/b/isbn/{{ suggestion.isbn}}-M.jpg " width="130px" alt="image not found">
+          <p>{{suggestion.title}}</p></a>
+         </div>
+       </div>
+      {% endfor %}
+    </div>
+  </div>
 {% endblock %}
