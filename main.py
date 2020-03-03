@@ -22,7 +22,7 @@ def home():
             n = random.randrange(1, 5000)
             sug_id.append(n)
         return(sug_id)
-        
+
     suggestions=[]
     for suglist in getsug_id():
         n= Books.query.filter_by(id=int(suglist)).first()
@@ -110,3 +110,4 @@ def delete(id):
     return redirect(url_for('main.profile', username= current_user.username))
 
 
+#API

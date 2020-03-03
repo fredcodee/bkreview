@@ -1,0 +1,36 @@
+#carouselExampleCaptions .w-100 {
+  height: 400px;
+}
+
+#carouselExampleCaptions h5 {
+  font-size: 3rem;
+  font-family: 'Merriweather', serif;
+}
+
+#carouselExampleCaptions h5 span {
+  color: red;
+}
+
+#bookHelp {
+  color: white;
+}
+
+.suggestions {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.suggestions h3 {
+  font-family: 'Merriweather', serif;
+  margin-bottom: 1.4rem;
+}
+
+.suggestions .sugcon a {
+  text-decoration: none;
+  color: black;
+}
+
+.suggestions .sugcon a img {
+  height: 200px;
+}
+/*# sourceMappingURL=base.css.map */

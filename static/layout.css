@@ -1,0 +1,12 @@
+.navbar .navbar-brand {
+  font-family: 'Merriweather', serif;
+}
+
+.navbar .nm {
+  color: red;
+}
+
+.navbar .logout:hover {
+  background-color: salmon;
+}
+/*# sourceMappingURL=layout.css.map */
