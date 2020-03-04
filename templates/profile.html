@@ -1,30 +1,42 @@
 {% extends 'layout.html'%}
+
 {%block title%}
 <title>{{current_user.username}}</title>
 {% endblock %}
 
+{% block links%}
+<link rel="stylesheet" href="{{ url_for('static',filename='profile.css') }}">
+{% endblock %}
+
+
 {% block con %}
+<div class="container">
   <div class="profilecon">
     <table>
       <tr valign="top">
         <td><img src="{{ current_user.avatar(128) }}"></td>
-        <td>
-          <h1>User: {{ current_user.username }}</h1>
-          <p>Email: {{current_user.email}}</p>
+        <td class="dd">
+          <h1>@{{ current_user.username }}</h1>
+          <p><span>Email:</span> {{current_user.email}}</p>
         </td>
       </tr>
     </table>
   </div>
-
-    <div class="yourreviews">
-      <p>your review historry</p>
-      {%for rev in info%}
-        <div class="list-group">
-          <p class="mb-1" style="color:black">{{rev.username}}</p>
-          <small>{{rev.dateposted.strftime("%b %d %Y %H:%M:%S")}}</small>
-          <p class="mb-1">"{{rev.comment}}" <span> <a href="/book/{{rev.book_isbn}}">-book isbn: {{rev.book_isbn}}</a></span><span><a href="{{ url_for('main.delete', id=rev.id) }}"><button class="delete">Delete</button></a></span></p>
-        </div>
-      {% endfor %}
+  
+  <div class="yourreviews">
+    <p class="nn">{{current_user.username.upper()}}'S RECENT UPDATES</p>
+    {%for rev in info%}
+    <div class="list-group">
+      <small>{{ current_user.username.title() }} gave a review</small>
+      <p class="mb-1">"{{rev.comment}}" <span> <a href="/book/{{rev.book_isbn}}">:book-isbn:
+            {{rev.book_isbn}}</a></span><span><a href="{{ url_for('main.delete', id=rev.id) }}"><button
+              class="delete">Delete</button></a></span></p>
+      <p class="mb-1" style="color:black">{{rev.username}}</p>
+      <small>{{rev.dateposted.strftime("%b %d %Y %H:%M:%S")}}</small>
     </div>
+    {% endfor %}
+  </div>
+</div>
+  
 
 {% endblock %}
