@@ -1,0 +1,47 @@
+.container {
+  text-align: center;
+  margin-top: 2.4rem;
+}
+
+.container img {
+  width: 100%;
+  height: 90%;
+}
+
+.container .col-sm-4 .name {
+  font-size: 2.5rem;
+  font-family: 'Merriweather', serif;
+}
+
+.container .col-sm-4 .rate {
+  color: red;
+}
+
+.container p {
+  font-family: 'Dosis',monospace;
+}
+
+.container .gd {
+  background-color: darkgrey;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 25px;
+}
+
+.container .gd h5 {
+  font-size: 1rem;
+}
+
+.container .gd h5 span {
+  color: red;
+}
+
+.container .gd .rr {
+  padding-top: 1.3rem;
+}
+
+.container .gd .link {
+  padding-bottom: 1.3rem;
+}
+/*# sourceMappingURL=bookpage.css.map */

@@ -1,23 +1,32 @@
 {% extends 'layout.html'%}
+
+{%block title%}
+<title>{{title}}</title>
+{% endblock %}
+
+{% block links%}
+<link rel="stylesheet" href="{{ url_for('static',filename='bookpage.css') }}">
+{% endblock %}
+
 {% block con %}
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
-      <img src="http://covers.openlibrary.org/b/isbn/{{ isbn }}-M.jpg" width="130px">
+      <img src="http://covers.openlibrary.org/b/isbn/{{ isbn }}-M.jpg">
     </div>
     <div class="col-sm-4">
-      <p>Title: {{ title }}</p>
+      <p class="name">Title: {{ title }}</p>
       <p>Author: {{ author }}</p>
       <p>Published on {{ year }}</p>
       <p>ISBN-10: {{isbn}}</p>
-      <p> Average rating score: {{ av}}</p>
+      <p class="rate"> Average rating score: {{ av}}</p>
     </div>
 
     <!--GOODREADS REVIEWS -->
-    <div class="col-sm-4">
-      <h5>Nº of Ratings: {{ wrc }}</h5>
-      <h5>Average rating score: {{ av }}</h5>
-      <h5>
+    <div class="col-sm-4 gd">
+      <h5 class="rr">Nº of Ratings: <span>{{ wrc }}</span></h5>
+      <h5>Average rating score: <span>{{ av }}</span></h5>
+      <h5 class="link">
         <a href="https://www.goodreads.com/search?q={{ title }}">Goodreads page</a>
       </h5>
     </div>
