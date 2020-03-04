@@ -102,7 +102,7 @@ def book_post(isbn):
 @login_required
 def profile(username):
     get_user = User.query.filter_by(username=username).first()
-    if not get_user or get_user != current_user.username:
+    if not get_user or username != current_user.username:
         abort(404)
     #get user reviews
     user_reviews = Review.query.all()
@@ -110,7 +110,8 @@ def profile(username):
     for info in user_reviews:
         if info.feedback.email == current_user.email:
             t.append(info)
-    return(render_template("profile.html", info=t))
+    count=len(t)
+    return(render_template("profile.html", info=t, count=count))
 
 #delete reviews
 @main.route("/delete/<id>")
