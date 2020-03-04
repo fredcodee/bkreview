@@ -41,7 +41,7 @@ def search():
         from sqlalchemy import or_
         books = Books.query.filter(or_(Books.isbn== get_book, Books.author == get_book, Books.title == get_book)).all()
         if books:
-            return(render_template("booklist.html", books=books))
+            return(render_template("booklist.html", books=books, search=get_book))
         else:
             flash("we can't find books with that description.")
             return(redirect(url_for("main.home")))
