@@ -1,6 +1,9 @@
 .container {
-  text-align: center;
   margin-top: 2.4rem;
+}
+
+.container .row {
+  text-align: center;
 }
 
 .container img {
@@ -43,5 +46,14 @@
 
 .container .gd .link {
   padding-bottom: 1.3rem;
+}
+
+.container .reviews {
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.userreviews h3 {
+  font-size: 1.2rem;
 }
 /*# sourceMappingURL=bookpage.css.map */
