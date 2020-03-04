@@ -1,7 +1,20 @@
 {% extends 'layout.html'%}
 
+{% block links%}
+<link rel="stylesheet" href="{{ url_for('static',filename='booklist.css') }}">
+{% endblock %}
+
 {% block con %}
- {%for book in books%}
-  <a href="/book/{{book['isbn']}}">{{book.title}}</a>
- {%endfor%}
+<div class="row">
+  {%for book in books%}
+    <div class="col-6 col-md-4">
+      <div class="book">
+        <a href="/book/{{book['isbn']}}"><img src="http://covers.openlibrary.org/b/isbn/{{ book['isbn']}}-M.jpg "
+            width="130px" alt="image not found">
+          <p>{{book.title}}</p>
+        </a>
+      </div>
+    </div>
+  {%endfor%}
+</div>
 {% endblock%}
