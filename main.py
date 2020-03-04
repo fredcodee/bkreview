@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, redirect, render_template, request, flash, jsonify,url_for
+from flask import Flask, Blueprint, redirect, render_template, request, flash, jsonify,url_for,abort
 from flask_login import LoginManager, login_required, current_user
 from . models import User, Books, Review
 from . import db
@@ -101,6 +101,10 @@ def book_post(isbn):
 @main.route("/<username>")
 @login_required
 def profile(username):
+    get_user = User.query.filter_by(username=username).first()
+    if not get_user:
+        abort(404)
+
     #get user reviews
     user_reviews = Review.query.all()
     t = []
@@ -118,5 +122,9 @@ def delete(id):
     db.session.commit()
     return redirect(url_for('main.profile', username= current_user.username))
 
+#error handling
+@main.errorhandler(404)
+def error404(error):
+  return(render_template('404.html'), 404)
 
 #API

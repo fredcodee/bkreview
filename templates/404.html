@@ -1,0 +1,11 @@
+{% extends 'layout.html'%}
+
+{%block title%}
+<title>Page Not Found</title>
+{% endblock %}
+
+{% block con %}
+  <h1 style="font-size: 2.2rem; text-align: center; margin-top: 1.5rem;">Oops! Looks like the page doesn't exist anymore</h1>
+  <p style="text-align: center;"><a href="{{ url_for('main.home') }}"><span>Click Here</span></a> To go to the Home Page</p>
+
+{% endblock %}
