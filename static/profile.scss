@@ -16,7 +16,7 @@
   }
 }
 .yourreviews{
-  margin-top: 3rem;
+  margin-top: 1.4rem;
   p{
     margin: 0;
   }
@@ -26,5 +26,16 @@
   }
   button{
     margin-left: 1rem;
+  }
+  small{
+    color: gray;
+  }
+}
+
+.overview{
+  .bb{
+    font-family: 'Merriweather', serif;
+    margin-top: 1.2rem;
+    margin-bottom: 0.5rem;
   }
 }

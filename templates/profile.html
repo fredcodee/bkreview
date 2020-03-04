@@ -14,7 +14,7 @@
   <div class="profilecon">
     <table>
       <tr valign="top">
-        <td><img src="{{ current_user.avatar(128) }}"></td>
+        <td><img src="{{ current_user.avatar(128) }}" class="rounded"></td>
         <td class="dd">
           <h1>@{{ current_user.username }}</h1>
           <p><span>Email:</span> {{current_user.email}}</p>
@@ -22,10 +22,12 @@
       </tr>
     </table>
   </div>
+  <hr>
   <div class="overview">
-    <p class="nn">{{current_user.username.upper()}}'S BOOKSHELVES</p>
+    <p class="bb">{{current_user.username.upper()}}'S BOOKSHELVES</p>
+    <p>Read({{count}}) | Reviews({{count}})</p>
   </div>
-  
+  <hr>
   <div class="yourreviews">
     <p class="nn">{{current_user.username.upper()}}'S RECENT UPDATES</p>
     {%for rev in info%}
@@ -37,6 +39,7 @@
       <p class="mb-1" style="color:black">{{rev.username}}</p>
       <small>{{rev.dateposted.strftime("%b %d %Y %H:%M:%S")}}</small>
     </div>
+    <hr>
     {% endfor %}
   </div>
 </div>
