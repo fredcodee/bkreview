@@ -102,9 +102,8 @@ def book_post(isbn):
 @login_required
 def profile(username):
     get_user = User.query.filter_by(username=username).first()
-    if not get_user:
+    if not get_user or get_user != current_user.username:
         abort(404)
-
     #get user reviews
     user_reviews = Review.query.all()
     t = []
