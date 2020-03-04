@@ -8,7 +8,7 @@ import json
 
 main = Blueprint('main', __name__)
 
-#get api key
+#goodreads api key
 key = "82F9vHtuZ1UxuDWQHifAA"
 
 
@@ -68,7 +68,16 @@ def book(isbn):
     else:
         check=True
 
-    return(render_template('bookpage.html', title=book_id.title, author=book_id.author, year=book_id.year, isbn=bd['isbn'], av=bd['average_rating'], wrc=bd['work_ratings_count'], reviews=book_reviews, check=check))
+    context={ "title":book_id.title,
+     "author":book_id.author,
+     "year":book_id.year,
+     "isbn":bd['isbn'],
+     "av":bd['average_rating'],
+     "wrc":bd['work_ratings_count'],
+     "reviews":book_reviews,
+     "check":check
+    }
+    return(render_template('bookpage.html', **context))
 
 
 
