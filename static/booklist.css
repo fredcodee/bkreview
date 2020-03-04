@@ -4,4 +4,22 @@ h3 {
   text-align: center;
   font-family: 'Merriweather', serif;
 }
+
+.row {
+  text-align: center;
+}
+
+.row .book a {
+  font-family: 'Dosis', monospace;
+  text-decoration: none;
+  color: black;
+}
+
+.row .book a:hover {
+  color: red;
+}
+
+.row .book a img {
+  height: 200px;
+}
 /*# sourceMappingURL=booklist.css.map */
