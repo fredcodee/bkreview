@@ -30,6 +30,10 @@
   color: black;
 }
 
+.suggestions .sugcon a:hover {
+  color: red;
+}
+
 .suggestions .sugcon a img {
   height: 200px;
 }
