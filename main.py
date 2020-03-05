@@ -127,4 +127,16 @@ def delete(id):
 def error404(error):
   return(render_template('404.html'), 404)
 
-#API
+#API Access
+@main.route("/api/<isbn>")
+def bkreviews_api(isbn):
+    book_isbn = Books.query.filter_by(isbn=isbn).first()
+
+    if not book_isbn:
+        return(render_template('404.html'), 404)
+    
+    """GOODREADS"""
+    r = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": key, "isbns": isbn})
+    a = r.json()
+    return(jsonify(a))
+    
