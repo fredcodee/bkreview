@@ -1,0 +1,13 @@
+.con{
+  width: 31%;
+  margin: auto;
+  padding-top: 2rem;
+  background-color: beige;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.con h1{
+  text-align: center;
+  font-family: 'Merriweather', serif;
+}
